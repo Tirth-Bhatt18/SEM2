@@ -59,13 +59,13 @@ public:
         Name = N;
         Rate = R;    //initialising variables of new object from user
         ID = I;  
-        Total = (float)Rate;
+        Total = Rate;
     }
 
     void IncreaseItemQuantity()
     {
         Quantity++;
-        Total = (float)(Rate*Quantity);
+        Total = Rate*Quantity;
     }
 
     void friend GenerateBill(Item Item[], int Count);
@@ -101,13 +101,13 @@ void GenerateBill(Item Item[], int Count)
 int main()
 {
     Item Item[10];
-    int Count=0, Choice=1, ID, Quantity;
+    int Count=0, Choice=1, ID, Quantity, i=0;
     string Name;  //temporary variables in main()
     float Rate;
     
     cout<<"\n\nAdd First Item:";
-    do{
-        int i=0;
+    while(Choice==1)
+    {
         cout<<"\nItem ID: ";
         cin>>ID;
         
@@ -135,8 +135,7 @@ int main()
         cout<<"\n\nChoices:\n1.Add Item\n0.Generate Bill";
         cout<<"\n\nPlease Select your Choice: "; //choice based system
         cin>>Choice;
-
-    }while(Choice==1);
+    }
 
     GenerateBill(Item, Count);
 
