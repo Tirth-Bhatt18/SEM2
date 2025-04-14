@@ -67,12 +67,12 @@ public:
 int main()
 {
     BankAccount Account[10];
-    int Choice=0, Count=0, AccountNum=0;
+    int Choice=0, Count=0, AccountNum=0, i=0;
     float Amount=0, Bal=0;              //temporary variables in main()
     string Name;
     
-    do{
-        int i=0;
+    while(Choice>=1&&Choice<=4);
+    {
         cout<<"\n\nChoices:\n1.Create Account\n2.Deposit Money\n3.Withdraw Money\n4.Check Balance\n0.Exit System";
         cout<<"\n\nPlease Select your Choice: "; //choice based system
         cin>>Choice;
@@ -146,8 +146,7 @@ int main()
         default:
             break;
         }
-
-    }while(Choice>=1&&Choice<=4);
+    }
     cout<<"\nExiting System....\n\n";
 
     return 0;
