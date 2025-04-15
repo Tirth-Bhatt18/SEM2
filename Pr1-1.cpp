@@ -67,7 +67,7 @@ public:
 int main()
 {
     BankAccount Account[10];
-    int Choice=0, Count=0, AccountNum=0, i=0;
+    int Choice=1, Count=0, AccountNum=0, i=0;
     float Amount=0, Bal=0;              //temporary variables in main()
     string Name;
     
