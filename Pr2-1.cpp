@@ -34,38 +34,34 @@ class Rectangle
     
 public:
 
+    void CalculateAnP()
+    {
+        Area = Length*Width;
+        Perimeter = 2*(Length + Width);
+    }
+
     void SetDimensions(int l, int w)
     {
         Length = l;
         Width = w;
+        CalculateAnP();
     }
 
-    int CalculateArea()
-    {
-        Area = Length*Width;
-        return Area;
+    void DisplayDetails() {
+        cout<<"\nLength: "<<Length<<" units."
+            <<"\nWidth: "<<Width<<" units."
+            <<"\nArea: "<<Area<<" sq. units."
+            <<"\nPerimeter: "<<Perimeter<<" units.";
     }
-    
-    int CalculatePerimeter()
-    {
-        Perimeter = 2*(Length + Width);
-        return Perimeter;
-    }
-
-    int ReturnLength()
-    {return Length;}
-    
-    int ReturnWidth()
-    {return Width;}
 };
     
 int main()
 {
     Rectangle R[10];
-    int Choice=0,Count=0;
+    int Choice=1,Count=0;
     int Length,Width,Area,Perimeter;
 
-    do
+    while(Choice>=1 && Choice<=3)
     {
         cout<<"\n\nChoices:\n1.Add Rectangle,\n2.Update Dimensions of Rectangle,\n3.View Existing Rectangles\n0.Exit System\nEnter your Choice: ";
         cin>>Choice; //choice based system
@@ -73,14 +69,13 @@ int main()
         switch (Choice)
         {
         case 1:
-            Count++;
-            cout<<"\nEnter Dimensions of New Rectangle "<<Count<<endl; //new rectangle
+            cout<<"\nEnter Dimensions of New Rectangle "<<Count+1<<endl; //new rectangle
             cin>>Length>>Width;
             R[Count].SetDimensions(Length,Width); //input via user
             cout<<"\nNew Rectangle Added!";
-            cout<<"\nTotal "<<Count<<" Rectangles in System";
-            cout<<"\nArea of Rectangle "<<Count<<" is "<<R[Count].CalculateArea()<<" sq. units.";
-            cout<<"\nPerimeter of Rectangle "<<Count<<" is "<<R[Count].CalculatePerimeter()<<" units.";
+            cout<<"\nTotal "<<Count+1<<" Rectangles in System";
+            R[Count].DisplayDetails();
+            Count++;
         break;
 
         case 2:
@@ -98,10 +93,8 @@ int main()
                 cin>>Length>>Width;
                 R[s-1].SetDimensions(Length,Width);//changing dimensions using the same input function
                 cout<<"\nRectangle Updated!";
-                cout<<"\nNew Length of Rectangle "<<s<<" is "<<R[s-1].ReturnLength()<<" units.";
-                cout<<"\nNew Width of Rectangle "<<s<<" is "<<R[s-1].ReturnWidth()<<" units.";
-                cout<<"\nNew Area of Rectangle "<<s<<" is "<<R[s-1].CalculateArea()<<" sq. units.";
-                cout<<"\nNew Perimeter of Rectangle "<<s<<" is "<<R[s-1].CalculatePerimeter()<<" units.";
+                cout<<"\nNew Details of Rectangle "<<s;
+                R[s-1].DisplayDetails();
             }
         break;
 
@@ -115,28 +108,15 @@ int main()
             }
             for(int j=0;j<Count;j++)
             {
-               cout<<"\n\nRectangle "<<j+1; //list of all rectangles
-              cout<<"\nLength of Rectangle "<<j+1<<" is "<<R[j].ReturnLength()<<" units.";
-              cout<<"\nWidth of Rectangle "<<j+1<<" is "<<R[j].ReturnWidth()<<" units.";
-             cout<<"\nArea of Rectangle "<<j+1<<" is "<<R[j].CalculateArea()<<" sq. units.";
-               cout<<"\nPerimeter of Rectangle "<<j+1<<" is "<<R[j].CalculatePerimeter()<<" units.";
+                cout<<"\n\nRectangle "<<j+1; //list of all rectangles
+                R[j].DisplayDetails();
             }
         break;
         
         default:
         break;
         }
-    }while(Choice>=1 && Choice<=3);
+    }
 
-    cout<<"\nExiting System....";
-    cout<<"\n\nViewing Existing "<<Count<<" Rectangles";
-        for(int j=0;j<Count;j++)
-          {
-            cout<<"\n\nRectangle "<<j+1; //final list
-            cout<<"\nLength of Rectangle "<<j+1<<" is "<<R[j].ReturnLength()<<" units.";
-            cout<<"\nWidth of Rectangle "<<j+1<<" is "<<R[j].ReturnWidth()<<" units.";
-            cout<<"\nArea of Rectangle "<<j+1<<" is "<<R[j].CalculateArea()<<" sq. units.";
-            cout<<"\nPerimeter of Rectangle "<<j+1<<" is "<<R[j].CalculatePerimeter()<<" units.";
-        }
     return 0;
 }
