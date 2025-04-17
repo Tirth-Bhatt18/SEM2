@@ -30,8 +30,7 @@ class Student
     float AvgMarks;    //class variables
     string Name;
 
-    void Average(int M1, int M2, int M3) //utility function in private
-    {
+    void CalculateAverage(int M1, int M2, int M3) {//utility function in private
         AvgMarks= (m1 + m2 + m3)/3;
     }
     
@@ -45,16 +44,14 @@ public:
         m2=M2;
         m3=M3;
         //calling utility fn from access function
-        Average(m1, m2, m3); //calculating average as soon as data enntered
+        CalculateAverage(m1, m2, m3); //calculating average as soon as data enntered
     }
     
-    float ReturnAverage()
-    {
+    float ReturnAverage() {
         return AvgMarks;
     }
 
-    void ViewData()
-    {
+    void DisplayData() {
         cout<<"\n\nID: "<<ID;
         cout<<"\nName: "<<Name;
         cout<<"\nMarks:";
@@ -75,7 +72,7 @@ int main()
     for (int i = 0; i < 5; i++) //for 5 students
     {
         int choice=0;
-        cout<<"\n\nDo you want to enter Details for Student "<<i+1<<" ?(Press 1 for yes): ";
+        cout<<"\n\nDo you want to enter custom Details for Student "<<i+1<<" ?(Press 1 for yes): ";
         cin>>choice;
 
         if(choice == 1)
@@ -103,7 +100,7 @@ int main()
     cout<<"\n\nViewing Details of 5 Students:";
     for (int i = 0; i < 5; i++)
     {
-        s[i].ViewData();
+        s[i].DisplayData();
     }
     
     return 0;
