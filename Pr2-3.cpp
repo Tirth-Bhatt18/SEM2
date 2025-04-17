@@ -34,8 +34,6 @@ coding convention - spaces comments camelcase, even in class diagram
 
 #include<iostream>
 using namespace std;
-
-int AN = 69420;
     
 class BankAccount
 {
@@ -49,14 +47,12 @@ public:
     int ReturnAccountNum()
     {return AccountNum;}
     
-    int CreateAccount(string N = "Test", float B = 0)
+    void InputData(string N = "Test", float B = 0, int an)
     {
         Count++;
         Name = N;
         Bal = B;
-        AccountNum = AN+Count;
-
-        return AccountNum;
+        AccountNum = an;
     }
 
     void Deposit(float B)
@@ -75,7 +71,7 @@ public:
         return 1;
     }
 
-    void AccountSummary()
+    void DisplayData()
     {
         cout<<"\nName: "<<Name;
         cout<<"\nAccount Number: "<<AccountNum;
@@ -89,12 +85,12 @@ int BankAccount :: Count = 0;
 int main()
 {
     BankAccount Account[10];
-    int Choice=0, Count=0, AccountNum=0;
+    int Choice=1, Count=0, AccountNum=0, i=0;
     float Amount=0, Bal=0;
     string Name;
     
-    do{
-        int i=0;
+    while(Choice>=1&&Choice<=4)
+    {
         cout<<"\n\nChoices:\n1.Create Account\n2.Deposit Money\n3.Withdraw Money\n4.Accounts List\n0.Exit System";
         cout<<"\n\nPlease Select your Choice: ";
         cin>>Choice;
@@ -107,8 +103,11 @@ int main()
             cin.ignore();
             getline(cin, Name);
             cout<<"Initial Balance to Deposit: ";
-            cin>>Bal;                                                          //input from user
-            cout<<"\nYour New Account is Created!!\nYour Account Number is: "<<Account[Count].CreateAccount(Name, Bal);
+            cin>>Bal;                            //input from user
+            cout<<"Account Number: ";
+            cin>>AccountNum;                    //input from user
+            Account[Count].InputData(Name, Bal, AccountNum);
+            cout<<"\nYour New Account is Created!!";
             Count++;
             break;
 
@@ -140,7 +139,7 @@ int main()
                     cout<<"\nEnter the Amount of Money you want to Withdraw: ";
                     cin>>Amount;
                     if(Account[i].Withdraw(Amount))
-                    cout<<"\nInvalid Amount! Please Withdraw such Amount as to leave your Account at Minimum Balance of Rs. 1000";
+                    cout<<"\nInsufficient Balance! Minimum Balance is Rs. 1000";
                     else
                     cout<<endl<<Amount<<" Rs. Withdrawn from Account Number "<<Account[i].ReturnAccountNum();
                     break;
@@ -153,8 +152,8 @@ int main()
             case 4:
             for(i=0;i<Count;i++) //listing all accounts in system
             {
-                cout<<"\nAccount Number "<<i+1<<endl;
-                Account[i].AccountSummary();
+                cout<<"\nAccount "<<i+1<<endl;
+                Account[i].DisplayData();
             }
             break;
         
@@ -162,7 +161,7 @@ int main()
             break;
         }
 
-    }while(Choice>=1&&Choice<=4);
+    }
     cout<<"\nExiting System....\n\n";
 
     return 0;
