@@ -45,13 +45,13 @@ class LoanMaster
 {
     int LoanID, Time;//all time in months
     string Name;
-    float Principle, IRate, EMI, Amount, Interest;
+    float Principle, IRate, EMI, Amount, Interest;//IRate in decimal not %
     
     void CalculateDetails() //utility method for calculations
     {
-        float temp = (float)pow(1+IRate, Time);
+        float temp = (float)pow(1+IRate, -Time);
 
-        EMI = Principle*IRate*temp/(temp - 1);
+        EMI = Principle*IRate/(1 - temp)/Time*12;
         Amount = EMI*Time;
         Interest = Amount - Principle;
     }
@@ -85,12 +85,11 @@ class LoanMaster
 int main()
 {
     LoanMaster Loan[20];
-    
-    int LoanID, Time, choice=0, Count=0;
+    int LoanID, Time, choice=1, Count=0;
     string Name;
     float Principle, IRate;
 
-    do
+    while(choice==1||choice==2)
     {
         cout<<"\n\nLoan Management System\nChoices:"; //choice based system
         cout<<"\n1. Add New Loan Details\n2. All Loans Summary\n0. Exit System\n\nEnter choice: ";
@@ -115,7 +114,8 @@ int main()
             Loan[Count].LoanSummary();
             Count++;
         }
-        else if(choice==2){
+        else if(choice==2)
+        {
             if(Count<1)
             cout<<"\nNO Loans in System!"; //error handling
             else
@@ -129,7 +129,7 @@ int main()
         }
         else
         break;
-    }while(choice==1||choice==2);
+    }
     cout<<"\nExiting System!";
     
     return 0;
