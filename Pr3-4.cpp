@@ -48,7 +48,7 @@ class Collection //template class
     int NumElements=0;
     Type* Kollection; //pointer to array(dynamic array)
 public:
-
+//Made by 24ce012 Tirth Bhatt
     void InputCollection(){
         if(NumElements!=0){
             cout<<"\nThis Collection already exists";
@@ -70,7 +70,7 @@ public:
             cout<<"\nElement "<<i+1<<": "<<Kollection[i];
         }
     }
-
+//Made by 24ce012 Tirth Bhatt
     void Reverse(){
         for(int j=0; j<NumElements/2; j++){
             Type temp;
@@ -93,19 +93,26 @@ public:
         }
         return Max;
     }
+
+    ~Collection() {
+        delete Kollection;
+    }
 };
-    
+//Made by 24ce012 Tirth Bhatt
 int main()
 {
     Collection<int> intCollect; //using template class
     Collection<float> floatCollect; 
     Collection<char> charCollect; //one collection for each data type
-    int Choice, Type, ID, n;
+    int Choice=1, Type, ID, n;
 
-    do{
+    while(Choice>0 && Choice<5)
+    {
         cout<<"\n\n~Data Type Collections~"
             <<"\nChoices:-\n1.Enter a New Collection\n2.Display all Collections\n3.Reverse a Collection\n4.Find Maximum value in a collection\n0.Exit System"
+            <<"\nMade by 24ce012 Tirth Bhatt"
             <<"\n\nEnter your Choice: "; //choie based system
+//Made by 24ce012 Tirth Bhatt
         cin>>Choice;
 
         switch(Choice){
@@ -144,7 +151,7 @@ int main()
                 <<"\n3. Character (char)"
                 <<"\n\nEnter Choice: ";
             cin>>Type;
-
+//Made by 24ce012 Tirth Bhatt
             if(Type==1){
                 cout<<"\nReversing elements of Integer collection...";
                 intCollect.Reverse();
@@ -167,8 +174,8 @@ int main()
         default:
             break;
         }
-    }while(Choice>0 && Choice<5);
-    cout<<"\n\nExiting System....";
+    }//Made by 24ce012 Tirth Bhatt
+    cout<<"\n\nExiting System...."<<"\nMade by 24ce012 Tirth Bhatt";
     
     return 0;
 }
