@@ -38,7 +38,7 @@ class AccountManager
     string Name;
     float Balance;
     static int Count;
-
+//Made by 24ce012 Tirth Bhatt
 public:
 
     int returnAccNum(){
@@ -73,17 +73,16 @@ int AccountManager::Count = 0; //initialising static variable outside class
 int main()
 {
     vector<AccountManager> A; //vector or dinamic array of accounts
-    int choice=0;
-
-    do{
+    string Name;
+    float Bal=0; //temporary variables
+    int AccNum=1, MyAccNum=1, i, chk, choice=1;
+//Made by 24ce012 Tirth Bhatt
+    while(choice==1||choice==2||choice==3)
+    {
         cout<<"\n\nBank Account Management System";
         cout<<"\nChoices:\n1.Add New Account\n2.Transfer Money to another acccount\n3.Display all accounts\n0.Exit system.\nEnter your choice: ";
-        cin>>choice; //choice based system
-        
-        string Name;
-        float Bal=0; //temporary variables
-        int AccNum=1, MyAccNum=1, i, chk;
-
+        cout<<"\nMade by 24ce012 Tirth Bhatt";
+        cin>>choice; //choice based syste
 
         switch(choice){
         case 1:
@@ -127,7 +126,7 @@ int main()
             }
             cout<<endl<<Bal<<" Rupees transferred succesfully!!";
             break;
-
+//Made by 24ce012 Tirth Bhatt
         case 3:
             cout<<"\nDisplaying "<<AccountManager::returnCount()<<" accounts:"; //ststic function call using class & not obj
             i=1;
@@ -141,7 +140,8 @@ int main()
         default:
             break;
         }
-    }while(choice==1||choice==2||choice==3);
-    cout<<"\n\nExiting System....";
+    }
+    cout<<"\n\nMade by 24ce012 Tirth Bhatt\nExiting System....";
     return 0;
+//Made by 24ce012 Tirth Bhatt
 }
