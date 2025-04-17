@@ -29,8 +29,6 @@ ItemStatus()
 
 #include<iostream>
 using namespace std;
-
-int IID = 420;
     
 class ItemData
 {
@@ -44,15 +42,13 @@ public:
     int ReturnID()
     {return ID;}
     
-    int NewItem(string N = "Test", float P = 0, int Q = 0)
+    void NewItem(string N = "Test", float P = 0, int Q = 0, int id=0)
     {
         Count++;
         Name = N;
         Price = P; 
         Quantity = Q;  //input from user
-        ID = IID+Count;
-
-        return ID;
+        ID = id;
     }
 
     void OrderItem(int Q)
@@ -85,15 +81,12 @@ int ItemData :: Count = 0;
 int main()
 {
     ItemData Item[10];
-    int Choice=0;
-    int Count=0;
-    float Qtny=0;
+    int Choice=0, Count=0, ID=0, Quantity = 0, i=0;
+    float Qtny=0, Price=0;
     string Name;
-    float Price=0;
-    int ID=0, Quantity = 0;
     
-    do{
-        int i=0;
+    while(Choice>=1&&Choice<=4)
+    {
         cout<<"\n\nChoices:\n1.Order New Item\n2.Order More Stock\n3.Sell Stock\n4.Inventory Summary\n0.Exit System";
         cout<<"\n\nPlease Select your Choice: ";
         cin>>Choice;
@@ -109,7 +102,10 @@ int main()
             cin>>Quantity;
             cout<<"Price: ";
             cin>>Price;
-            cout<<"\nNew Item Ordered!!\nItem ID is: "<<Item[Count].NewItem(Name, Price, Quantity);
+            cout<<"Item ID: ";
+            cin>>ID;
+            Item[Count].NewItem(Name, Price, Quantity, ID);
+            cout<<"\nNew Item Ordered!!";
             Count++;
             break;
 
@@ -160,7 +156,7 @@ int main()
             break;
         }
 
-    }while(Choice>=1&&Choice<=4);
+    }
     cout<<"\nExiting System....\n\n";
 
     return 0;
