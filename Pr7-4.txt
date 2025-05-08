@@ -1,0 +1,6 @@
+Student Data Manager
+Name Marks Grade
+Tirth 45 50 49 A
+Ansh 46 49 50 A
+Krrish 44 45 43 B
+Vedant 49 50 48 O

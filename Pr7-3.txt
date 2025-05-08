@@ -1,0 +1,3 @@
+Inventory Management System
+Name Quantity Price
+tirth 1 999.000000
